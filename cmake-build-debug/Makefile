@@ -130,6 +130,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named BQTest2
+
+# Build rule for target.
+BQTest2: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BQTest2
+.PHONY : BQTest2
+
+# fast build rule for target.
+BQTest2/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BQTest2.dir/build.make CMakeFiles/BQTest2.dir/build
+.PHONY : BQTest2/fast
+
+#=============================================================================
 # Target rules for targets named BQTest
 
 # Build rule for target.
@@ -148,6 +161,7 @@ BQ.o: BQ.cpp.o
 
 # target to build an object file
 BQ.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BQTest2.dir/build.make CMakeFiles/BQTest2.dir/BQ.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BQTest.dir/build.make CMakeFiles/BQTest.dir/BQ.cpp.o
 .PHONY : BQ.cpp.o
 
@@ -157,6 +171,7 @@ BQ.i: BQ.cpp.i
 
 # target to preprocess a source file
 BQ.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BQTest2.dir/build.make CMakeFiles/BQTest2.dir/BQ.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BQTest.dir/build.make CMakeFiles/BQTest.dir/BQ.cpp.i
 .PHONY : BQ.cpp.i
 
@@ -166,6 +181,7 @@ BQ.s: BQ.cpp.s
 
 # target to generate assembly for a file
 BQ.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BQTest2.dir/build.make CMakeFiles/BQTest2.dir/BQ.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BQTest.dir/build.make CMakeFiles/BQTest.dir/BQ.cpp.s
 .PHONY : BQ.cpp.s
 
@@ -223,6 +239,33 @@ OpsTest.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BQTest.dir/build.make CMakeFiles/BQTest.dir/OpsTest.cpp.s
 .PHONY : OpsTest.cpp.s
 
+kv_rw.o: kv_rw.cpp.o
+
+.PHONY : kv_rw.o
+
+# target to build an object file
+kv_rw.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BQTest2.dir/build.make CMakeFiles/BQTest2.dir/kv_rw.cpp.o
+.PHONY : kv_rw.cpp.o
+
+kv_rw.i: kv_rw.cpp.i
+
+.PHONY : kv_rw.i
+
+# target to preprocess a source file
+kv_rw.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BQTest2.dir/build.make CMakeFiles/BQTest2.dir/kv_rw.cpp.i
+.PHONY : kv_rw.cpp.i
+
+kv_rw.s: kv_rw.cpp.s
+
+.PHONY : kv_rw.s
+
+# target to generate assembly for a file
+kv_rw.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BQTest2.dir/build.make CMakeFiles/BQTest2.dir/kv_rw.cpp.s
+.PHONY : kv_rw.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -232,6 +275,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... BQTest"
+	@echo "... BQTest2"
 	@echo "... BQ.o"
 	@echo "... BQ.i"
 	@echo "... BQ.s"
@@ -241,6 +285,9 @@ help:
 	@echo "... OpsTest.o"
 	@echo "... OpsTest.i"
 	@echo "... OpsTest.s"
+	@echo "... kv_rw.o"
+	@echo "... kv_rw.i"
+	@echo "... kv_rw.s"
 .PHONY : help
 
 

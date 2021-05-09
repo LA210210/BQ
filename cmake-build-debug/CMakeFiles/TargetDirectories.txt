@@ -1,3 +1,4 @@
 /home/leo/BQ-lock-free-batch-queue/cmake-build-debug/CMakeFiles/rebuild_cache.dir
 /home/leo/BQ-lock-free-batch-queue/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/leo/BQ-lock-free-batch-queue/cmake-build-debug/CMakeFiles/BQTest2.dir
 /home/leo/BQ-lock-free-batch-queue/cmake-build-debug/CMakeFiles/BQTest.dir

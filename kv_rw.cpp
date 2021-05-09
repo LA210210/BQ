@@ -10,7 +10,7 @@ static int TEST_NUM;
 static int TEST_TIME;
 static double BATCH_RATIO;
 static double WRITE_RATIO;
-
+static int BATCH_NUM;
 //static char test_str[9] = "deedbeef";
 
 bool * batch_list;
@@ -28,6 +28,8 @@ uint64_t g_value;
 void concurrent_worker(int tid){
     uint64_t l_value = 0;
     int index = 0;
+    uint64_t batchnum = 0;
+    Init_thread();
     Tracer t;
     t.startTime();
     while(stopMeasure.load(memory_order_relaxed) == 0){
@@ -35,14 +37,16 @@ void concurrent_worker(int tid){
         for(size_t i = 0; i < TEST_NUM; i++){
             if(writelist[i]){
                 if(operationlist[i]){
+                    for(size_t i=0;i<BATCH_NUM-1;i++){
                     operationnum[i]++;
-                    FutureEnqueue(&opvaluelist[i]);
+                    FutureEnqueue(&opvaluelist+i);
+                    }
+                    Enqueue(opvaluelist+i);
+                    batchnum+=BATCH_NUM;
                 }else{
                     operationnum[i]++;
-                    Enqueue(&opvaluelist[i]);
+                    Enqueue(opvaluelist+i);
                 }
-
-
             }else{
                 if(operationlist[i]){
                     operationnum[i]++;
@@ -64,21 +68,23 @@ void concurrent_worker(int tid){
 
 
 int main(int argc, char **argv){
-    if (argc == 6) {
+    if (argc == 7) {
         THREAD_NUM = stol(argv[1]);
         TEST_TIME = stol(argv[2]);
         TEST_NUM = stol(argv[3]);
-        BATCH_RATIO=stod(argv[4]);
-        WRITE_RATIO = stod(argv[5]);
+        BATCH_NUM = stol(argv[4]);
+        BATCH_RATIO=stod(argv[5]);
+        WRITE_RATIO = stod(argv[6]);
 
     } else {
-        printf("./kv_rw <thread_num>  <test_time> <test_num> <write_ratio>\n");
+        printf("./kv_rw <thread_num>  <test_time> <test_num> <batch_num> <batch_ratio> <write_ratio>\n");
         return 0;
     }
 
     cout<<"thread_num "<<THREAD_NUM<<endl<<
         "test_time "<<TEST_TIME<<endl<<
         "test_num "<<TEST_NUM<<endl<<
+        "batch_num"<<BATCH_NUM<<endl<<
         "batch_ratio "<<BATCH_RATIO<<
         "write_ratio "<<WRITE_RATIO<<endl;
 
@@ -104,6 +110,8 @@ int main(int argc, char **argv){
         writelist[i] = rand() *1.0 / RAND_MAX * 100 < WRITE_RATIO;
     }
 
+
+    Init();
     vector<thread> threads;
     for(size_t i = 0; i < THREAD_NUM; i++){
         threads.push_back(thread(concurrent_worker,i));

@@ -72,6 +72,7 @@ CMAKE_BINARY_DIR = /home/leo/BQ-lock-free-batch-queue/cmake-build-debug
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/BQTest2.dir/all
 all: CMakeFiles/BQTest.dir/all
 
 .PHONY : all
@@ -82,9 +83,37 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/BQTest2.dir/clean
 clean: CMakeFiles/BQTest.dir/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/BQTest2.dir
+
+# All Build rule for target.
+CMakeFiles/BQTest2.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BQTest2.dir/build.make CMakeFiles/BQTest2.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BQTest2.dir/build.make CMakeFiles/BQTest2.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leo/BQ-lock-free-batch-queue/cmake-build-debug/CMakeFiles --progress-num=5,6,7 "Built target BQTest2"
+.PHONY : CMakeFiles/BQTest2.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/BQTest2.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leo/BQ-lock-free-batch-queue/cmake-build-debug/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/BQTest2.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leo/BQ-lock-free-batch-queue/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/BQTest2.dir/rule
+
+# Convenience name for target.
+BQTest2: CMakeFiles/BQTest2.dir/rule
+
+.PHONY : BQTest2
+
+# clean rule for target.
+CMakeFiles/BQTest2.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BQTest2.dir/build.make CMakeFiles/BQTest2.dir/clean
+.PHONY : CMakeFiles/BQTest2.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/BQTest.dir
