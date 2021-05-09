@@ -10,8 +10,8 @@ enum Type{ENQ, DEQ};
 
 struct Future {
     void* result;
-    bool isDone;
-    Future():isDone(false), result(NULL){}
+    bool isDoneInGroup;
+    Future():isDoneInGroup(false), result(NULL){}
 };
 
 struct Node{

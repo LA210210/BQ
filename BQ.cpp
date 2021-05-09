@@ -5,10 +5,10 @@
 thread_local ThreadData threadData;
 
 #define CAS compare_exchange_strong
+alignas(64)
 std::atomic<PtrCnt> SQTail;
 alignas(64)
 std::atomic<PtrCntOrAnn> SQHead;
-alignas(64)
 void EnqueueToShared(void* item);
 void* DequeueFromShared();
 PtrCnt HelpAnnAndGetHead();
@@ -242,7 +242,7 @@ void Init_thread()
 
 void*  Evaluate(Future* future)
 {
-    if(!future->isDone){
+    if(!future->isDoneInGroup){
         ExecuteAllPending();
     }
     return future->result;
@@ -292,7 +292,7 @@ void PairFuturesWithResults(Node* oldHeadNode)
                 op.future->result = currentHead->item;
             }
         }
-        op.future->isDone = true;
+        op.future->isDoneInGroup = true;
     }
 }
 std::pair<unsigned int, Node*> ExecuteDeqsBatch()
@@ -333,13 +333,13 @@ void PairDeqFuturesWithResults(Node* oldHeadNode, unsigned int successfulDeqsNum
         op = threadData.opsQueue.front();
         threadData.opsQueue.pop();
         op.future->result = currentHead->item;
-        op.future->isDone=true;
+        op.future->isDoneInGroup=true;
     }
     int excess = threadData.deqsNum - successfulDeqsNum;
     for(int i=0;i< excess ;i++){
         op = threadData.opsQueue.front();
         threadData.opsQueue.pop();
         op.future->result=NULL;
-        op.future->isDone=true;
+        op.future->isDoneInGroup=true;
     }
 }

@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/BQTest.dir/OpsTest.cpp.o CMakeFiles/BQTest.dir/BQ.cpp.o CMakeFiles/BQTest.dir/MSQ.cpp.o  -o BQTest  -lpthread -latomic 

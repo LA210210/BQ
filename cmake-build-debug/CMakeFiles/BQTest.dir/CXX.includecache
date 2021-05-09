@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/leo/BQ-lock-free-batch-queue/MSQ.cpp
+stdlib.h
+-
+atomic
+-
+cstddef
+-
+iostream
+-
+chrono
+-
+thread
+-
+stdio.h
+-
+time.h
+-
+cstdint
+-
+

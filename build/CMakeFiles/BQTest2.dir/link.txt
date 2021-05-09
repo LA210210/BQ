@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/BQTest2.dir/kv_rw.cpp.o CMakeFiles/BQTest2.dir/BQ.cpp.o  -o BQTest2  -lpthread -latomic 

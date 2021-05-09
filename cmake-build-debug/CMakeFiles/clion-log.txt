@@ -1,0 +1,4 @@
+/home/leo/clion/CLion-2021.1/clion-2021.1/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/bin/make -DCMAKE_C_COMPILER=/bin/cc -DCMAKE_CXX_COMPILER=/bin/c++ -G "CodeBlocks - Unix Makefiles" /home/leo/BQ-lock-free-batch-queue
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/leo/BQ-lock-free-batch-queue/cmake-build-debug

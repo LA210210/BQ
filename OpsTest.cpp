@@ -23,11 +23,11 @@ int* A;
 
 void run(int ops_per_batch,int threadnum) {
 	
-	cpu_set_t set;
-	CPU_ZERO(&set);
+	//cpu_set_t set;
+	//CPU_ZERO(&set);
 	
-	CPU_SET(threadnum, &set);
-	sched_setaffinity(0, sizeof(set), &set);
+//	CPU_SET(threadnum, &set);
+	//sched_setaffinity(0, sizeof(set), &set);
 	
 	int x,y,z;
 	
